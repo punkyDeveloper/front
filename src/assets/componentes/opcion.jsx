@@ -8,7 +8,7 @@ function Opciones({ id, titulo: initialTitulo, descripcion: initialDescripcion, 
   const [status, setStatus] = useState(initialStatus || false);
   const [error, setError] = useState("");
 
-  console.log(`${process.env.REACT_APP_API_URL}${id}`);
+
 
 
   const [modal, setModal] = useState(null); // "view" | "edit" | "delete"
@@ -30,12 +30,12 @@ function Opciones({ id, titulo: initialTitulo, descripcion: initialDescripcion, 
       console.error("ID no proporcionado.");
       return;
     }
-console.log(process.env.REACT_APP_API_URL);
+
     const status1 = status === "Activo" ? true : false;
-console.log(status1);
+
     const formData = { titulo, descripcion, status1 };
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}actualizarTarea/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -69,7 +69,7 @@ console.log(status1);
       return;
     }
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}eliminarTarea/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
